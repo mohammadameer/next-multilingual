@@ -1,13 +1,22 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { getHtmlLang } from "next-multilingual";
+import { DocumentProps, Head, Html, Main, NextScript } from "next/document";
 
-export default function Document() {
+const Document: React.FC<DocumentProps> = (documentProps) => {
   return (
-    <Html lang="en">
-      <Head />
+    <Html
+      lang={getHtmlLang(documentProps)}
+      translate="no"
+      className="notranslate"
+    >
+      <Head>
+        <meta name="google" content="notranslate" />
+      </Head>
       <body>
         <Main />
         <NextScript />
       </body>
     </Html>
-  )
-}
+  );
+};
+
+export default Document;
